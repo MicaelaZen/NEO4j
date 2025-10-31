@@ -1,0 +1,474 @@
+MATCH(a:Artist)
+WHERE toLower(trim(a.name)) STARTS WITH 'o'
+RETURN a.name as NomeOriginal;
+
+MATCH(a:Artist)
+WHERE toLower(trim(a.name)) STRAT WITH 'o'
+RETURN a.name as NomeOriginal;
+
+MATCH(a)
+RETURN trim(a.name), START WUTH 'O', toLower(a.name);
+
+MATCH(a)
+RETURN trim(a.name), starts with 'O', toLower(a.name);
+
+MATCH(a)
+RETURN trim(a.name), strats with 'O', toLower(a.name);
+
+MATCH(a)
+WHERE a.name CONTAINS ' '
+RETURN a.name AS NomeOriginal, replace(a.name, ' ', '_' ) as NomeForma;
+
+MATCH (c:City{name: 'Rio de Janeiro'})
+RETURN c.name AS NomePadr,  substring(c.name,0, size(c.name) -1) as NomeMod;
+
+MATCH (c:City{name: 'Rio de Janeiro'})
+RETURN c.name AS NomePadr,  substring(c.name,0, size(c.name) -1);
+
+MATCH (C:City{name: 'Rio de Janeiro'})
+RETURN c.name AS NomePadr,  substring(c.name,0, size(c.name) -1);
+
+MATCH(a:Artist{name:'Ocean Waves'})
+RETURN a.name AS NomeDoArtista, right(a.name,5);
+
+MATCH(a:Artist{name:'Ocean Waves'})
+RETURN a.name RIGHT(5);
+
+MATCH (a:Artist)-[r:RECORDED_ON]->(alb:Album)
+WHERE toLower(r.studio) CONTAINS 'studio'
+RETURN 
+  a.name AS artista,
+  alb.title AS album,
+  r.studio AS estudio;
+
+MATCH (alb:Album)
+WHERE alb.title STARTS WITH 'A' OR alb.title ENDS WITH 'Human'
+RETURN alb.title;
+
+MATCH (ALB:Album)
+WHERE alb.title STARTS WITH 'A' OR alb.title ENDS WITH 'Human'
+RETURN alb.title;
+
+MATCH (ALB:Album)
+WHERE alb.title STARTS WITH 'A' OR alb.title ENDS WITH 'Human')
+RETURN alb.title;
+
+CREATE (:Artist {name: ' The Space '})
+RETURN trim(' The Space ');
+
+CREATE (:Artist {name: ' The Space '});
+
+CREATE (:Artist {name: ' The Space '});
+
+MATCH (a:Artist{name: 'Aurora'})
+RETURN a.name AS Nome, a.genre AS Gênero, a.followers AS Seguidores, a.active AS Ativo;
+
+MATCH (a:Artist{name: 'Aurora',})
+RETURN a.name AS Nome, a.genre AS Gênero, a.followers AS Seguidores, a.active AS Ativo;
+
+MATCHCH (a:Artist);
+
+MATCHCH (a:Artist);
+
+MATCH (a:Artist)
+RETURN a.genre as gênero;
+
+MATCH (n:Album) RETURN n LIMIT 25;
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c);
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c);
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb);
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb);
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb);
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c);
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40});
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40});
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c);
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb)
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb)
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c)
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c)
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40});
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb)
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb)
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c)
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c)
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb)
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb)
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c)
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c)
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+whith
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb)
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb)
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c)
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c)
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true})
+
+CREATE (:City {name: 'Bergen', population: 283000})
+CREATE (:City {name: 'Rio de Janeiro', population: 6718000})
+
+CREATE (:Album {title: 'The Moon', tracks: 10, durationMin: 45})
+CREATE (:Album {title: 'A Different Kind of Human', tracks: 11, durationMin: 38})
+CREATE (:Album {title: 'Echoes of Silence', tracks: 8, durationMin: 60})
+CREATE (:Album {title: 'O Tempo', tracks: 12, durationMin: 40})
+
+MATCH (a:Artist {name: 'Aurora'}), (c:City {name: 'Bergen'})
+CREATE (a)-[:RESIDES_IN {since: 2012}]->(c)
+
+MATCH (a:Artist {name: 'Vitor K.'}), (c:City {name: 'Rio de Janeiro'})
+CREATE (a)-[:RESIDES_IN {since: 2018}]->(c)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'A Different Kind of Human'})
+CREATE (a)-[:RECORDED_ON {studio: 'ABC Studio'}]->(alb)
+
+MATCH (a:Artist {name: 'Aurora'}), (alb:Album {title: 'The Moon'})
+CREATE (a)-[:RECORDED_ON {studio: 'HomeStudio'}]->(alb)
+
+MATCH (a:Artist {name: 'Ocean Waves'}), (alb:Album {title: 'Echoes of Silence'})
+CREATE (a)-[:RECORDED_ON {studio: 'Sea Vibes'}]->(alb)
+
+MATCH (alb:Album {title: 'The Moon'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2023-05-15')}]->(c)
+
+MATCH (alb:Album {title: 'A Different Kind of Human'}), (c:City {name: 'Bergen'})
+CREATE (alb)-[:RELEASED_IN {releaseDate: date('2019-09-04')}]->(c)
+
+MATCH (a1:Artist {name: 'Aurora'}), (a2:Artist {name: 'Vitor K.'})
+CREATE (a1)-[:LIKES {score: 9.2}]->(a2)
+CREATE (a2)-[:LIKES {score: 8.5}]->(a1);
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true});
+
+CREATE (:Artist {name: 'Aurora', genre: 'Pop', followers: 1200000, active: true})
+CREATE (:Artist {name: 'Ocean Waves', genre: 'Ambient', followers: 500000, active: true})
+CREATE (:Artist {name: 'Renascent', genre: 'Rock', followers: 80000, active: false})
+CREATE (:Artist {name: 'Vitor K.', genre: 'Pop', followers: 400000, active: true});
+
+CREATE (:Artista{nome: 'Diante do trono'}), (:Album{nome: 'Oração com fé'}), (:Cidade{nome; 'Guarulhos'});
+
+CREATE (:Artista{nome: 'Diante do trono'}), (:Album{nome: 'Oração com fé'}), (:Cidade{nome; 'Guarulhos'});
+
+MATCH(a:Pessoa{nome: "Ana"}), (b:Pessoa{nome: "Bruno"})
+CREATE (a)-[AMIGO_DE]->(B)
+RETURN A,B;
+
+MATCH(a:Pessoa{nome; "Ana"}), (b:Pessoa{nome; "Bruno"})
+CREATE (a)-[AMIGO_DE]->(B)
+RETURN A,B;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH (n:Pessoa) RETURN n LIMIT 25;
+
+CREATE(:Pessoa{nome:"Paula", idade:31, cidade:"Porto Alegre"}), (:Pessoa{nome:"Bruno", idade:29, cidade:"São Paulo"});
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH (n:Pessoa) RETURN n LIMIT 25;
+
+MATCH (n) 
+WHERE n.idade IS NOT NULL
+RETURN DISTINCT "node" as entity, n.idade AS idade LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.idade IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.idade AS idade LIMIT 25;
+
+MATCH (n) 
+WHERE n.nome IS NOT NULL
+RETURN DISTINCT "node" as entity, n.nome AS nome LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.nome IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.nome AS nome LIMIT 25;
+
+MATCH (n) 
+WHERE n.idade IS NOT NULL
+RETURN DISTINCT "node" as entity, n.idade AS idade LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.idade IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.idade AS idade LIMIT 25;
+
+MATCH (n) 
+WHERE n.nome IS NOT NULL
+RETURN DISTINCT "node" as entity, n.nome AS nome LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.nome IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.nome AS nome LIMIT 25;
+
+CREATE(p:Pessoa{nome:"Ana", idade:30, cidade:"Porto Alegre"}) RETURN p;
