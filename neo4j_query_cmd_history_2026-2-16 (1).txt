@@ -1,0 +1,139 @@
+CALL db.schema.visualization();
+
+CALL db.schema.visualization(*);
+
+MATCH (n) RETURN n LIMIT 25;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH (n:User) RETURN n LIMIT 25;
+
+MATCH (n:Serie) RETURN n LIMIT 25;
+
+MATCH (n:Movie) RETURN n LIMIT 25;
+
+MATCH (n:Genre) RETURN n LIMIT 25;
+
+MATCH (n:Director) RETURN n LIMIT 25;
+
+MATCH (n:Actor) RETURN n LIMIT 25;
+
+MATCH (n) RETURN n LIMIT 25;
+
+CALL bd.schema.visualisation();
+
+CALL bd.schema.visualization();
+
+CREATE
+// 1
+(:Actor {ID:"A010", name:"Chris Pratt"})-[:ACTED_IN]->(s1:Serie {ID:"S010", name:"Galactic Outpost", genre:"Sci-fi", director:"Lena Howard"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Rafaela", idade:21, genre:"female", UF:"Bahia", ID:"U010"})
+-[:WATCHED {rate:5}]->(m1:Movie {name:"Interstellar", genre:"Sci-fi", ID:"M010"})-[:IN_GENRE]->(:Genre {name:"Sci-fi"}),
+(:Actor {ID:"A001", name:"Leonardo DiCaprio"})-[:ACTED_IN]->(m1)<-[:_RELATED {ID:"D010"}]-(:Director {ID:"D010", name:"Christopher Nolan"}),
+(:Director {`ID `:"D010", `name `:"Lena Howard"})-[:DIRECTED]->(s1)-[:IN_GENRE]->(:Genre {name:"Adventure"}),
+
+// 2
+(:Actor {ID:"A011", name:"Emma Watson"})-[:ACTED_IN]->(s2:Serie {ID:"S011", name:"Mystic Academy", genre:"Fantasy", director:"Oliver Grant"})
+<-[:WATCHED {rate:5}]-(:User {nome:"João", idade:30, genre:"male", UF:"São Paulo", ID:"U011"})
+-[:WATCHED {rate:4}]->(m2:Movie {name:"The Circle", genre:"Tech", ID:"M011"})-[:IN_GENRE]->(:Genre {name:"Tech"}),
+(:Actor {ID:"A012", name:"Tom Hanks"})-[:ACTED_IN]->(m2)<-[:_RELATED {ID:"D011"}]-(:Director {ID:"D011", name:"James Ponsoldt"}),
+(:Director {`ID `:"D011", `name `:"Oliver Grant"})-[:DIRECTED]->(s2)-[:IN_GENRE]->(:Genre {name:"Fantasy"}),
+
+// 3
+(:Actor {ID:"A013", name:"Michael B. Jordan"})-[:ACTED_IN]->(s3:Serie {ID:"S012", name:"Urban Shadows", genre:"Crime", director:"Helena Duarte"})
+<-[:WATCHED {rate:3}]-(:User {nome:"Carla", idade:27, genre:"female", UF:"Rio de Janeiro", ID:"U012"})
+-[:WATCHED {rate:5}]->(m3:Movie {name:"Creed", genre:"Drama", ID:"M012"})-[:IN_GENRE]->(:Genre {name:"Drama"}),
+(:Actor {ID:"A014", name:"Sylvester Stallone"})-[:ACTED_IN]->(m3)<-[:_RELATED {ID:"D012"}]-(:Director {ID:"D012", name:"Ryan Coogler"}),
+(:Director {`ID `:"D012", `name `:"Helena Duarte"})-[:DIRECTED]->(s3)-[:IN_GENRE]->(:Genre {name:"Crime"}),
+
+// 4
+(:Actor {ID:"A015", name:"Zendaya"})-[:ACTED_IN]->(s4:Serie {ID:"S013", name:"Neon Pulse", genre:"Drama", director:"Ricardo Alves"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Felipe", idade:22, genre:"male", UF:"Paraná", ID:"U013"})
+-[:WATCHED {rate:5}]->(m4:Movie {name:"Dune", genre:"Sci-fi", ID:"M013"})-[:IN_GENRE]->(:Genre {name:"Sci-fi"}),
+(:Actor {ID:"A016", name:"Timothée Chalamet"})-[:ACTED_IN]->(m4)<-[:_RELATED {ID:"D013"}]-(:Director {ID:"D013", name:"Denis Villeneuve"}),
+(:Director {`ID `:"D013", `name `:"Ricardo Alves"})-[:DIRECTED]->(s4)-[:IN_GENRE]->(:Genre {name:"Drama"}),
+
+// 5
+(:Actor {ID:"A017", name:"Henry Cavill"})-[:ACTED_IN]->(s5:Serie {ID:"S014", name:"Steel Kingdom", genre:"Fantasy", director:"Amelia Ross"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Mariana", idade:33, genre:"female", UF:"Ceará", ID:"U014"})
+-[:WATCHED {rate:4}]->(m5:Movie {name:"Man of Steel", genre:"Action", ID:"M014"})-[:IN_GENRE]->(:Genre {name:"Action"}),
+(:Actor {ID:"A018", name:"Amy Adams"})-[:ACTED_IN]->(m5)<-[:_RELATED {ID:"D014"}]-(:Director {ID:"D014", name:"Zack Snyder"}),
+(:Director {`ID `:"D014", `name `:"Amelia Ross"})-[:DIRECTED]->(s5)-[:IN_GENRE]->(:Genre {name:"Fantasy"}),
+
+// 6
+(:Actor {ID:"A019", name:"Anya Taylor-Joy"})-[:ACTED_IN]->(s6:Serie {ID:"S015", name:"Queen's Gambit 2", genre:"Drama", director:"Felipe Rocha"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Lucas", idade:25, genre:"male", UF:"Minas Gerais", ID:"U015"})
+-[:WATCHED {rate:5}]->(m6:Movie {name:"Emma", genre:"Romance", ID:"M015"})-[:IN_GENRE]->(:Genre {name:"Romance"}),
+(:Actor {ID:"A020", name:"Bill Nighy"})-[:ACTED_IN]->(m6)<-[:_RELATED {ID:"D015"}]-(:Director {ID:"D015", name:"Autumn de Wilde"}),
+(:Director {`ID `:"D015", `name `:"Felipe Rocha"})-[:DIRECTED]->(s6)-[:IN_GENRE]->(:Genre {name:"Drama"}),
+
+// 7
+(:Actor {ID:"A021", name:"Pedro Pascal"})-[:ACTED_IN]->(s7:Serie {ID:"S016", name:"Harbor Watch", genre:"Action", director:"Sofia Mendes"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Thiago", idade:29, genre:"male", UF:"Amazonas", ID:"U016"})
+-[:WATCHED {rate:4}]->(m7:Movie {name:"The Mandalorian", genre:"Sci-fi", ID:"M016"})-[:IN_GENRE]->(:Genre {name:"Sci-fi"}),
+(:Actor {ID:"A022", name:"Gina Carano"})-[:ACTED_IN]->(m7)<-[:_RELATED {ID:"D016"}]-(:Director {ID:"D016", name:"Jon Favreau"}),
+(:Director {`ID `:"D016", `name `:"Sofia Mendes"})-[:DIRECTED]->(s7)-[:IN_GENRE]->(:Genre {name:"Action"}),
+
+// 8
+(:Actor {ID:"A023", name:"Millie Bobby Brown"})-[:ACTED_IN]->(s8:Serie {ID:"S017", name:"Frozen Kingdom", genre:"Fantasy", director:"Helena Bjorn"})
+<-[:WATCHED {rate:3}]-(:User {nome:"Beatriz", idade:19, genre:"female", UF:"Pernambuco", ID:"U017"})
+-[:WATCHED {rate:5}]->(m8:Movie {name:"Enola Holmes", genre:"Mystery", ID:"M017"})-[:IN_GENRE]->(:Genre {name:"Mystery"}),
+(:Actor {ID:"A024", name:"Henry Cavill"})-[:ACTED_IN]->(m8)<-[:_RELATED {ID:"D017"}]-(:Director {ID:"D017", name:"Harry Bradbeer"}),
+(:Director {`ID `:"D017", `name `:"Helena Bjorn"})-[:DIRECTED]->(s8)-[:IN_GENRE]->(:Genre {name:"Fantasy"}),
+
+// 9
+(:Actor {ID:"A025", name:"Oscar Isaac"})-[:ACTED_IN]->(s9:Serie {ID:"S018", name:"Digital Haunting", genre:"Tech", director:"Samuel Wright"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Eduarda", idade:32, genre:"female", UF:"Rio Grande do Sul", ID:"U018"})
+-[:WATCHED {rate:5}]->(m9:Movie {name:"Ex Machina", genre:"Tech", ID:"M018"})-[:IN_GENRE]->(:Genre {name:"Tech"}),
+(:Actor {ID:"A026", name:"Alicia Vikander"})-[:ACTED_IN]->(m9)<-[:_RELATED {ID:"D018"}]-(:Director {ID:"D018", name:"Alex Garland"}),
+(:Director {`ID `:"D018", `name `:"Samuel Wright"})-[:DIRECTED]->(s9)-[:IN_GENRE]->(:Genre {name:"Tech"}),
+
+// 10
+(:Actor {ID:"A027", name:"Jenna Ortega"})-[:ACTED_IN]->(s10:Serie {ID:"S019", name:"Nightfall Academy", genre:"Horror", director:"Miguel Santos"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Alice", idade:18, genre:"female", UF:"São Paulo", ID:"U019"})
+-[:WATCHED {rate:4}]->(m10:Movie {name:"Scream", genre:"Horror", ID:"M019"})-[:IN_GENRE]->(:Genre {name:"Horror"}),
+(:Actor {ID:"A028", name:"Courteney Cox"})-[:ACTED_IN]->(m10)<-[:_RELATED {ID:"D019"}]-(:Director {ID:"D019", name:"Matt Bettinelli"}),
+(:Director {`ID `:"D019", `name `:"Miguel Santos"})-[:DIRECTED]->(s10)-[:IN_GENRE]->(:Genre {name:"Horror"}),
+
+// 11
+(:Actor {ID:"A029", name:"Cillian Murphy"})-[:ACTED_IN]->(s11:Serie {ID:"S020", name:"Broken Empire", genre:"Political", director:"Lucia Romano"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Renato", idade:45, genre:"male", UF:"Distrito Federal", ID:"U020"})
+-[:WATCHED {rate:5}]->(m11:Movie {name:"Oppenheimer", genre:"Drama", ID:"M020"})-[:IN_GENRE]->(:Genre {name:"Drama"}),
+(:Actor {ID:"A030", name:"Emily Blunt"})-[:ACTED_IN]->(m11)<-[:_RELATED {ID:"D020"}]-(:Director {ID:"D020", name:"Christopher Nolan"}),
+(:Director {`ID `:"D020", `name `:"Lucia Romano"})-[:DIRECTED]->(s11)-[:IN_GENRE]->(:Genre {name:"Political"}),
+
+// 12
+(:Actor {ID:"A031", name:"Daniel Radcliffe"})-[:ACTED_IN]->(s12:Serie {ID:"S021", name:"Arcane Secrets", genre:"Fantasy", director:"Helena Prado"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Marcelo", idade:36, genre:"male", UF:"Pará", ID:"U021"})
+-[:WATCHED {rate:5}]->(m12:Movie {name:"Now You See Me 2", genre:"Crime", ID:"M021"})-[:IN_GENRE]->(:Genre {name:"Crime"}),
+(:Actor {ID:"A032", name:"Jesse Eisenberg"})-[:ACTED_IN]->(m12)<-[:_RELATED {ID:"D021"}]-(:Director {ID:"D021", name:"Jon M. Chu"}),
+(:Director {`ID `:"D021", `name `:"Helena Prado"})-[:DIRECTED]->(s12)-[:IN_GENRE]->(:Genre {name:"Fantasy"}),
+
+// 13
+(:Actor {ID:"A033", name:"Gal Gadot"})-[:ACTED_IN]->(s13:Serie {ID:"S022", name:"Amazon Shield", genre:"Action", director:"Paulo Ribeiro"})
+<-[:WATCHED {rate:4}]-(:User {nome:"Isabela", idade:24, genre:"female", UF:"Acre", ID:"U022"})
+-[:WATCHED {rate:5}]->(m13:Movie {name:"Wonder Woman", genre:"Action", ID:"M022"})-[:IN_GENRE]->(:Genre {name:"Action"}),
+(:Actor {ID:"A034", name:"Chris Pine"})-[:ACTED_IN]->(m13)<-[:_RELATED {ID:"D022"}]-(:Director {ID:"D022", name:"Patty Jenkins"}),
+(:Director {`ID `:"D022", `name `:"Paulo Ribeiro"})-[:DIRECTED]->(s13)-[:IN_GENRE]->(:Genre {name:"Adventure"}),
+
+// 14
+(:Actor {ID:"A035", name:"Bryan Cranston"})-[:ACTED_IN]->(s14:Serie {ID:"S023", name:"Crimson Code", genre:"Crime", director:"Victor Ramos"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Gustavo", idade:25, genre:"male", UF:"Goiás", ID:"U023"})
+-[:WATCHED {rate:4}]->(m14:Movie {name:"Argo", genre:"Drama", ID:"M023"})-[:IN_GENRE]->(:Genre {name:"Drama"}),
+(:Actor {ID:"A036", name:"Ben Affleck"})-[:ACTED_IN]->(m14)<-[:_RELATED {ID:"D023"}]-(:Director {ID:"D023", name:"Ben Affleck"}),
+(:Director {`ID `:"D023", `name `:"Victor Ramos"})-[:DIRECTED]->(s14)-[:IN_GENRE]->(:Genre {name:"Crime"}),
+
+// 15
+(:Actor {ID:"A037", name:"Scarlett Johansson"})-[:ACTED_IN]->(s15:Serie {ID:"S024", name:"Black Horizon", genre:"Action", director:"Nina Collins"})
+<-[:WATCHED {rate:5}]-(:User {nome:"Marina", idade:30, genre:"female", UF:"São Paulo", ID:"U024"})
+-[:WATCHED {rate:5}]->(m15:Movie {name:"Lucy", genre:"Sci-fi", ID:"M024"})-[:IN_GENRE]->(:Genre {name:"Sci-fi"}),
+(:Actor {ID:"A038", name:"Morgan Freeman"})-[:ACTED_IN]->(m15)<-[:_RELATED {ID:"D024"}]-(:Director {ID:"D024", name:"Luc Besson"}),
+(:Director {`ID `:"D024", `name `:"Nina Collins"})-[:DIRECTED]->(s15)-[:IN_GENRE]->(:Genre {name:"Action"});
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH (n) RETURN n LIMIT 25;
+
+CREATE (:Actor {ID: "A002", name: "Alan Ritchson"})-[:ACTED_IN]->(Serie:Serie {ID: "S001", name: "Reacher", genre: "Action", director: "Thomas Vincent"})<-[:WATCHED {rate: 5}]-(:User {nome: "Jessica", idade: 33, genre: "female", UF: "São Paulo", ID: "U001"})-[:WATCHED {rate: 5}]->(Movie:Movie {name: "Titanic", genre: "Drama", ID: "M001"})-[:IN_GENRE]->(:Genre {name: "Drama"}),
+(:Actor {ID: "A001", name: "Leonardo diCaprio"})-[:ACTED_IN]->(Movie)<-[:_RELATED {ID: "D002"}]-(:Director {ID: "D002", name: "James Cameron"}),
+(:Director {`ID `: "D002", `name `: "Thomas Vincent"})-[:DIRECTED]->(Serie)-[:IN_GENRE]->(:Genre {name: "Action"});
